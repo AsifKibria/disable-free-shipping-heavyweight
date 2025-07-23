@@ -20,6 +20,9 @@ This plugin allows WooCommerce shop owners to restrict any shipping method (Free
 * Cart subtotal, item count, and dimension limits
 * Customizable frontend message for customers
 * Product-level override to exclude specific products from restrictions
+* **Admin notification email can be enabled/disabled in settings**
+* **Admin notification email includes customer name and product details**
+* **Leverages persistent object cache (e.g., Redis/Memcached) for performance if available**
 * Admin notification when a restricted shipping method is attempted
 
 Useful for shop owners who want to avoid offering free or discounted shipping for bulky, heavy, or high-value orders.
@@ -45,12 +48,25 @@ Yes. When you delete the plugin, all settings are removed automatically.
 = Can I exclude certain products from restrictions? =
 Yes. Edit the product and check the box labeled "Exclude this product from shipping restrictions."
 
+= Can I disable admin notification emails? =
+Yes. There is a setting in the plugin options to enable or disable admin notification emails.
+
+= What information is included in the admin notification email? =
+The email includes the customer's name (if logged in) and a list of products in the cart at the time the shipping method was restricted.
+
+= Does the plugin support caching plugins like Redis or Memcached? =
+Yes. If a persistent object cache is detected, the plugin will cache restriction results for up to 12 hours for improved performance.
+
 == Screenshots ==
 1. Admin settings panel
 2. Cart with shipping method disabled due to restriction
 3. Product edit screen with override option
 
 == Changelog ==
+= 1.3.0 =
+* Added option to enable/disable admin notification emails
+* Admin notification email now includes customer name and product details
+* Leverages persistent object cache (e.g., Redis/Memcached) for performance if available
 = 1.2.0 =
 * Major update: Multiple shipping methods, zone/class/subtotal/item count/dimension thresholds, admin notification, frontend messaging, product-level override
 = 1.1.0 =
@@ -61,5 +77,5 @@ Yes. Edit the product and check the box labeled "Exclude this product from shipp
 * Initial release
 
 == Upgrade Notice ==
-= 1.2.0 =
-Major update: Multiple shipping methods, zone/class/subtotal/item count/dimension thresholds, admin notification, frontend messaging, product-level override.
+= 1.3.0 =
+Added admin notification email toggle, customer/product details in email, and persistent object cache support for improved performance.

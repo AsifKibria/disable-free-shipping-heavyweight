@@ -1,5 +1,7 @@
 # Disable Free Shipping for Heavyweight Orders
 
+[**⬇️ Download Plugin ZIP**](disable-free-shipping-for-heavyweight-orders_plugin.zip)
+
 A powerful WooCommerce plugin that disables or hides selected shipping methods (not just Free Shipping) when the cart meets certain conditions, such as weight, subtotal, item count, or dimensions.
 
 ## Features
@@ -10,6 +12,9 @@ A powerful WooCommerce plugin that disables or hides selected shipping methods (
 - Restrict based on cart subtotal, item count, or product dimensions
 - Product-level override: exclude specific products from restrictions
 - Customizable frontend message for customers
+- **Admin notification email can be enabled/disabled in settings**
+- **Admin notification email includes customer name and product details**
+- **Leverages persistent object cache (e.g., Redis/Memcached) for performance if available**
 - Admin notification when a restricted shipping method is attempted
 - Admin settings panel under WooCommerce
 - Clean uninstall (removes all plugin options)
@@ -38,6 +43,12 @@ You’ll find the following options in the admin panel:
 - **Dimension limit**: Restrict based on product dimensions (LxWxH).
 - **Frontend message**: Custom message shown to customers when a method is restricted.
 - **Product-level override**: Exclude specific products from restrictions via a checkbox in the product edit screen.
+- **Admin notification email**: Enable or disable admin notification emails. Email includes customer name and product details.
+
+## Performance & Caching
+
+- The plugin uses in-memory caching for restriction checks per page load.
+- If a persistent object cache (e.g., Redis, Memcached) is detected, the plugin leverages it to cache restriction results for up to 12 hours, reducing database and calculation overhead.
 
 ## Uninstall
 
@@ -52,6 +63,24 @@ add_filter( 'dfsh_weight_limit', function( $limit ) {
     return 25; // new limit in kg
 });
 ```
+
+## Changelog
+
+### 1.3.0
+- Added option to enable/disable admin notification emails
+- Admin notification email now includes customer name and product details
+- Leverages persistent object cache (e.g., Redis/Memcached) for performance if available
+
+### 1.2.0
+- Major update: Multiple shipping methods, zone/class/subtotal/item count/dimension thresholds, admin notification, frontend messaging, product-level override
+
+### 1.1.0
+- Added admin settings panel
+- Added uninstall cleanup
+- Option to hide or label free shipping
+
+### 1.0.0
+- Initial release
 
 ## Author
 
